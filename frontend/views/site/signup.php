@@ -13,6 +13,18 @@ $authItemRoleList = ArrayHelper::map(\frontend\models\AuthItem::find()
     ->andWhere(['not',['in','name',['Admin']]])
     ->asArray()->all(),'name','name');
 ?>
+
+<?php 
+
+$this->registerCss("
+div.required label.control-label:after {
+    content: \" *\";
+    color: red;
+}
+");
+
+?>
+
 <div class="site-signup">
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,20 +41,6 @@ $authItemRoleList = ArrayHelper::map(\frontend\models\AuthItem::find()
                 <?= $form->field($model, 'fullname') ?>
 
                 <?= $form->field($model, 'password')->passwordInput() ?>
-                
-                <?php if ($authItemPermissionList): ?>
-
-                <?= $form->field($model, 'permission')->checkboxList($authItemPermissionList)
-                ->label('Permission'); ?>
-                
-                <?php endif ?>
-
-                <?php if ($authItemRoleList): ?>
-
-                <?= $form->field($model, 'role')->checkboxList($authItemRoleList)
-                ->label('Role'); ?>
-
-                <?php endif ?>
 
                 <div class="form-group">
                     <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>

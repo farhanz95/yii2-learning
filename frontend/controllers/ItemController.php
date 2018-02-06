@@ -3,11 +3,15 @@
 namespace frontend\controllers;
 
 use Yii;
+use frontend\models\UploadForm;
 use frontend\models\Item;
 use frontend\models\ItemSearch;
+use frontend\models\MasterNegeri;
+use frontend\models\MasterDaerah;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 
 /**
  * ItemController implements the CRUD actions for Item model.
@@ -66,12 +70,15 @@ class ItemController extends Controller
     {
         $model = new Item();
 
+        $imageModel = new UploadForm();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->item_id]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'imageModel' => $imageModel,
         ]);
     }
 
@@ -95,6 +102,21 @@ class ItemController extends Controller
         ]);
     }
 
+    public function actionUpload()
+    {
+        $model = new UploadForm();
+
+        if (Yii::$app->request->isPost) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if ($model->upload()) {
+                // file is uploaded successfully
+                return;
+            }
+        }
+
+        return $this->render('upload', ['model' => $model]);
+    }
+
     /**
      * Deletes an existing Item model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -109,6 +131,40 @@ class ItemController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionGetState(){
+
+        $testArray = ["results" => [
+            ["id" => 1,"text" => "Option 1"],
+            ["id" => 2,"text" => "Option 2"],
+            "pagination" => ["more" => true]
+        ]];
+
+        return json_encode($testArray,JSON_PRETTY_PRINT);
+
+        $negara_id = Yii::$app->request->post('negara_id');
+        $stateArray = ArrayHelper::map(MasterNegeri::find()->where(['negara_id'=>$negara_id])->asArray()->all(),'negeri_id','negeri_nama');
+        // if (!$stateArray) {
+        //     echo "<option value=''>-No State Found-</option>";
+        //     exit;
+        // }
+        // echo "<option value=''>-Select State-</option>";
+        // foreach ($stateArray as $key => $val) {
+        //     echo "<option value=".$key.">".$val."</option>";
+        // }
+        return json_encode($stateArray,JSON_PRETTY_PRINT);
+    }
+    public function actionGetCity(){
+        $negeri_id = Yii::$app->request->post('negeri_id');
+        $cityArray = ArrayHelper::map(MasterDaerah::find()->where(['negeri_id'=>$negeri_id])->asArray()->all(),'daerah_id','daerah_nama');
+        if (!$cityArray) {
+            echo "<option value=''>-No City Found-</option>";
+            exit;
+        }
+        echo "<option value=''>-Select City-</option>";
+        foreach ($cityArray as $key => $val) {
+            echo "<option value=".$key.">".$val."</option>";
+        }
+    }
     /**
      * Finds the Item model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

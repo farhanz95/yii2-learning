@@ -10,33 +10,6 @@ class RbacController extends Controller
     {
         $auth = Yii::$app->authManager;
         $auth->removeAll();
-        
-        // // add "createPost" permission
-        // $createPost = $auth->createPermission('createPost');
-        // $createPost->description = 'Create a post';
-        // $auth->add($createPost);
-
-        // // add "updatePost" permission
-        // $updatePost = $auth->createPermission('updatePost');
-        // $updatePost->description = 'Update post';
-        // $auth->add($updatePost);
-
-        // // add "author" role and give this role the "createPost" permission
-        // $author = $auth->createRole('author');
-        // $auth->add($author);
-        // $auth->addChild($author, $createPost);
-
-        // // add "admin" role and give this role the "updatePost" permission
-        // // as well as the permissions of the "author" role
-        // $admin = $auth->createRole('admin');
-        // $auth->add($admin);
-        // $auth->addChild($admin, $updatePost);
-        // $auth->addChild($admin, $author);
-
-        // // Assign roles to users. 1 and 2 are IDs returned by IdentityInterface::getId()
-        // // usually implemented in your User model.
-        // $auth->assign($author, 2);
-        // $auth->assign($admin, 1);
 
         $createItem = $auth->createPermission('/create/item');
         $createItem->description = 'Create Item';
@@ -50,10 +23,28 @@ class RbacController extends Controller
         $deleteItem->description = 'Delete Item';
         $auth->add($deleteItem);
 
+        $frontenduser = $auth->createRole('frontend_user');
+        $auth->add($frontenduser);
+
+        // add the rule
+        $rule = new \component\rbac\FrontendUserRule;
+        $auth->add($rule);
+
+        // add the "updateOwnItem" permission and associate the rule with it.
+        $updateOwnItem = $auth->createPermission('updateOwnItem');
+        $updateOwnItem->description = 'Update own item';
+        $updateOwnItem->ruleName = $rule->name;
+        $auth->add($updateOwnItem);
+
+        // "updateOwnItem" will be used from "updateItem"
+        $auth->addChild($updateOwnItem, $updateItem);
+
+        // allow "frontenduser" to update their own item
+        $auth->addChild($frontenduser, $updateOwnItem);
+
         $productmanager = $auth->createRole('product-manager');
         $auth->add($productmanager);
         $auth->addChild($productmanager,$createItem);
-        $auth->addChild($productmanager,$updateItem);
 
         $admin = $auth->createRole('admin');
         $auth->add($admin);

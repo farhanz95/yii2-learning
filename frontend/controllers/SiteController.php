@@ -150,32 +150,13 @@ class SiteController extends Controller
     {
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
-            $permission = [];
-            $role = [];
-            if (isset(Yii::$app->request->post()['SignupForm']['permission'])) {
-                $permission = Yii::$app->request->post()['SignupForm']['permission'] ? Yii::$app->request->post()['SignupForm']['permission'] : [];
-            }
-            if (isset(Yii::$app->request->post()['SignupForm']['role'])) {
-                $role = Yii::$app->request->post()['SignupForm']['role'] ? Yii::$app->request->post()['SignupForm']['role'] : [];
-            }
-            $permissionAndRole = array_merge($permission,$role);
             if ($user = $model->signup()) {
-                foreach ($permissionAndRole as $accessList) {
-                    $authAssignment = new \frontend\models\AuthAssignment;
-                    $authAssignment->item_name = $accessList;
-                    $authAssignment->user_id = $user->id;
-                    $authAssignment->created_at = Yii::$app->formatter->asTimestamp(date('Y-d-m h:i:s'));
-                    if ($authAssignment->save()) {
-                        # code...
-                    }else{
-                        var_dump($authAssignment->error);die;
-                    }
-                }
                 if (Yii::$app->getUser()->login($user)) {
                     return $this->goHome();
                 }
             }
         }
+
         return $this->render('signup', [
             'model' => $model,
         ]);
