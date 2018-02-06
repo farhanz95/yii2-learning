@@ -132,27 +132,18 @@ class ItemController extends Controller
     }
 
     public function actionGetState(){
-
-        $testArray = ["results" => [
-            ["id" => 1,"text" => "Option 1"],
-            ["id" => 2,"text" => "Option 2"],
-            "pagination" => ["more" => true]
-        ]];
-
-        return json_encode($testArray,JSON_PRETTY_PRINT);
-
         $negara_id = Yii::$app->request->post('negara_id');
         $stateArray = ArrayHelper::map(MasterNegeri::find()->where(['negara_id'=>$negara_id])->asArray()->all(),'negeri_id','negeri_nama');
-        // if (!$stateArray) {
-        //     echo "<option value=''>-No State Found-</option>";
-        //     exit;
-        // }
-        // echo "<option value=''>-Select State-</option>";
-        // foreach ($stateArray as $key => $val) {
-        //     echo "<option value=".$key.">".$val."</option>";
-        // }
-        return json_encode($stateArray,JSON_PRETTY_PRINT);
+        if (!$stateArray) {
+            echo "<option value=''>-No State Found-</option>";
+            exit;
+        }
+        echo "<option value=''>-Select State-</option>";
+        foreach ($stateArray as $key => $val) {
+            echo "<option value=".$key.">".$val."</option>";
+        }
     }
+    
     public function actionGetCity(){
         $negeri_id = Yii::$app->request->post('negeri_id');
         $cityArray = ArrayHelper::map(MasterDaerah::find()->where(['negeri_id'=>$negeri_id])->asArray()->all(),'daerah_id','daerah_nama');
@@ -165,6 +156,7 @@ class ItemController extends Controller
             echo "<option value=".$key.">".$val."</option>";
         }
     }
+
     /**
      * Finds the Item model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

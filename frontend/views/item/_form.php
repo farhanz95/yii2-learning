@@ -47,7 +47,7 @@ $this->registerCss("
             'Gadget'=>'Gadget',
             ],['prompt'=>'-Select Item Type-']) ?>
 
-        <?= $form->field($model, 'item_price')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'item_price')->textInput(['maxlength' => true,'type'=>'number']) ?>
           
 
       </div>
@@ -71,39 +71,17 @@ $this->registerCss("
       </div>
       <div class="panel-body">
 
-        <?= $form->field($model, 'item_manufactured_country_address')->widget(Select2::classname(), [
-            'data' => $masterCountry,
-            'language' => 'en',
-            'options' => ['placeholder' => '-Select Country-'],
-            'pluginOptions' => [
-                'allowClear' => true
-            ],
-        ]); ?>
+        <?= $form->field($model, 'item_manufactured_country_address')->dropDownList($masterCountry,['prompt'=>'-Select Country-']) ?>
 
-        <?= $form->field($model, 'item_manufactured_state_address')->widget(Select2::classname(), [
-            'data' => [],
-            'language' => 'en',
-            'options' => ['placeholder' => '-Select Country First-'],
-            'pluginOptions' => [
-                'allowClear' => true
-            ],
-        ]); ?>
+        <?= $form->field($model, 'item_manufactured_state_address')->dropDownList([],['prompt'=>'-Select Country First-']) ?>
 
+        <?= $form->field($model, 'item_manufactured_city_address')->dropDownList([],['prompt'=>'-Select State First-']) ?>
 
-        <?= $form->field($model, 'item_manufactured_city_address')->widget(Select2::classname(), [
-            'data' => [],
-            'language' => 'en',
-            'options' => ['placeholder' => '-Select State First-'],
-            'pluginOptions' => [
-                'allowClear' => true
-            ],
-        ]); ?>
-
-        <?= $form->field($model, 'item_manufactured_postcode_address')->textInput() ?>
+        <?= $form->field($model, 'item_manufactured_postcode_address')->textInput(['type'=>'number']) ?>
 
         <?= $form->field($model, 'item_manufactured_street_address')->textArea(['maxlength' => true]) ?>
 
-        <?= $form->field($model, 'item_manufactured_no_address')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'item_manufactured_no_address')->textInput(['maxlength' => true,'type'=>'number']) ?>
 
 
         <?= '<label>'.$model->getAttributeLabel('item_manufactured_date').'</label>' ?>
@@ -129,16 +107,16 @@ $this->registerCss("
       <div class="panel-body">
         
         <div class="col-lg-3 col-md-3 col-sm-3 brp">
-        <?= $form->field($model, 'item_weight')->textInput()->label('Item Weight (KG)') ?>
+        <?= $form->field($model, 'item_weight')->textInput(['type'=>'number'])->label('Item Weight (KG)') ?>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 brp">
-        <?= $form->field($model, 'item_size_height')->textInput()->label('Item Height (CM)') ?>
+        <?= $form->field($model, 'item_size_height')->textInput(['type'=>'number'])->label('Item Height (CM)') ?>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 brp">
-        <?= $form->field($model, 'item_size_width')->textInput()->label('Item Width (CM)') ?>
+        <?= $form->field($model, 'item_size_width')->textInput(['type'=>'number'])->label('Item Width (CM)') ?>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-3 brp">
-        <?= $form->field($model, 'item_size_length')->textInput()->label('Item Length (CM)') ?>
+        <?= $form->field($model, 'item_size_length')->textInput(['type'=>'number'])->label('Item Length (CM)') ?>
         </div>
           
 
@@ -197,6 +175,20 @@ $this->registerCss("
     <?php ActiveForm::end(); ?>
 
 </div>
+
+<?php 
+
+$js = "
+
+$('body').on('keydown','input[type=number]',function(){
+    return event.keyCode == 69 || event.keyCode == 189 ? false : true;
+})
+
+";
+$this->registerJs($js);
+
+?>
+
 <?php 
 $this->registerJs("
 $('body').on('change','select[name=\"Item[item_manufactured_country_address]\"]',function(){
@@ -207,10 +199,7 @@ $('body').on('change','select[name=\"Item[item_manufactured_country_address]\"]'
             url: '".Yii::getAlias('@web')."/item/get-state',
             data: 'negara_id='+selected,
             success: function(data){
-                var stateSelect = $('select[name=\"Item[item_manufactured_state_address]\"]');
-                
-                console.log(data);
-
+                $('select[name=\"Item[item_manufactured_state_address]\"]').html(data);
             } 
         })
     }else{

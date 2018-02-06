@@ -54,11 +54,13 @@ class Item extends \yii\db\ActiveRecord
     {
         return [
             [['item_name', 'item_product_id'], 'required'],
-            [['item_quantity', 'item_manufactured_country_address', 'item_manufactured_state_address', 'item_manufactured_city_address', 'item_manufactured_postcode_address', 'item_activeness'], 'integer'],
+            [['item_manufactured_country_address', 'item_manufactured_state_address', 'item_manufactured_city_address', 'item_manufactured_postcode_address', 'item_activeness'], 'integer'],
+            [['item_quantity'],'integer','min'=>0],
             [['item_manufactured_date', 'item_availability_date_start', 'item_availability_date_end', 'item_registered_on_system_date', 'item_updated_on_system_date'], 'safe'],
+            [['item_price', 'item_weight', 'item_size_height', 'item_size_width', 'item_size_length'], 'number','min'=>'0.00', 'numberPattern' => '/^[0-9]{1,10}([\.,][0-9]{1,2})*$/','message'=>'Input can only contain 2 decimal point'],
             [['item_name', 'item_type', 'item_brand', 'item_model', 'item_company_manufacturer', 'item_manufactured_street_address'], 'string', 'max' => 255],
             [['item_product_id'], 'string', 'max' => 11],
-            [['item_price', 'item_manufactured_no_address', 'item_weight', 'item_size_height', 'item_size_width', 'item_size_length'], 'string', 'max' => 10],
+            [['item_manufactured_no_address'], 'string', 'max' => 10],
             [['item_manufactured_country_address'], 'exist', 'skipOnError' => true, 'targetClass' => MasterNegara::className(), 'targetAttribute' => ['item_manufactured_country_address' => 'negara_id']],
             [['item_manufactured_state_address'], 'exist', 'skipOnError' => true, 'targetClass' => MasterNegeri::className(), 'targetAttribute' => ['item_manufactured_state_address' => 'negeri_id']],
             [['item_manufactured_city_address'], 'exist', 'skipOnError' => true, 'targetClass' => MasterDaerah::className(), 'targetAttribute' => ['item_manufactured_city_address' => 'daerah_id']],
