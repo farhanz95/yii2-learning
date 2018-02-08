@@ -77,8 +77,19 @@ class SiteController extends Controller
         }
 
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+        if (Yii::$app->request->post()) {
+
+            $data = Yii::$app->request->post();
+            $data['LoginForm']['rememberMe'] = isset($data['LoginForm']['rememberMe']) ? true : false;
+
+            if ($model->load($data) && $model->login()) {
+                return $this->goBack();
+            }else{
+                return $this->render('login', [
+                    'model' => $model,
+                ]);
+            }
+
         } else {
             return $this->render('login', [
                 'model' => $model,

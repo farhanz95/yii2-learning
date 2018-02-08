@@ -78,14 +78,14 @@ $this->params['breadcrumbs'][] = $this->title;
                   <!-- end section -->
 
                   <div class="section">
-                    <label class="switch block">
-                      <input type="checkbox" name="remember2" id="remember2" checked>
-                      <label for="remember2" data-on="YES" data-off="NO"></label>
-                      <span>Remember me</span>
-                    </label>
+                    <div class="form-group field-loginform-rememberme">
+                      <label class="switch block">
+                        <input type="checkbox" name="LoginForm[rememberMe]" id="loginform-rememberme" checked>
+                        <label for="loginform-rememberme" data-on="YES" data-off="NO"></label>
+                        <span>Remember me</span>
+                      </label>
+                    </div>
                   </div>
-
-                  <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
                   <!-- end section -->
 
