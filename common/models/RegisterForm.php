@@ -52,8 +52,7 @@ class RegisterForm extends Model
             ['confirm_passwords', 'compare', 'compareAttribute' => 'password'],
             [['mobile_phone_no'], 'string'],
             [['mobile_phone_no'], PhoneInputValidator::className()],
-            [['agreement'],'required','message'=>''],
-            ['verifyCode','captcha'],
+            [['agreement'],'required','message'=>'']
         ];
     }
     /**

@@ -103,6 +103,20 @@ class SiteController extends Controller
 
         $model = new \common\models\RegisterForm();
 
+        if ($data = Yii::$app->request->post()) {
+
+            if ($model->load($data)) {
+                if ($user = $model->signup()) {
+
+                    return $this->render('register',[
+                        'model' => $model
+                    ]);
+                    
+                }
+            }
+            
+        }
+
         return $this->render('register',[
             'model' => $model
         ]);

@@ -209,7 +209,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                       </div>
 
-                      <div class="section">
+                      <!-- <div class="section">
                         <label for="verify" class="field-label">Prove you're not a robot</label>
                         <div class="smart-widget sm-left sml-80">
                           <label for="verify" class="field prepend-icon">
@@ -220,9 +220,9 @@ $this->params['breadcrumbs'][] = $this->title;
                           </label>
                           <label for="verify" class="button">4 + 12</label>
                         </div>
-                        <!-- end .smart-widget section -->
-                      </div>
-                      <!-- end section -->
+
+                      </div> -->
+                      
 
                       <div class="section">
 
