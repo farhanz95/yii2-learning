@@ -2,6 +2,7 @@
 namespace common\models;
 use yii\base\Model;
 use common\models\User;
+use borales\extensions\phoneInput\PhoneInputValidator;
 /**
  * Signup form
  */
@@ -11,9 +12,26 @@ class RegisterForm extends Model
     public $email;
     public $fullname;
     public $password;
+    public $confirm_passwords;
     public $status;
     public $permission;
     public $role;
+
+    public $first_name;
+    public $last_name;
+
+    public $birth_year;
+    public $birth_month;
+    public $birth_day;
+
+    public $birth_country;
+    public $birth_state;
+    public $birth_city;
+    public $gender;
+    public $mobile_phone_no;
+
+    public $agreement;
+    public $verifyCode;
     /**
      * @inheritdoc
      */
@@ -21,7 +39,7 @@ class RegisterForm extends Model
     {
         return [
             ['username', 'trim'],
-            ['username', 'required'],
+            [['first_name','last_name','birth_year','birth_month','birth_day','birth_country','gender','mobile_phone_no','username'], 'required'],
             ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
             ['username', 'string', 'min' => 2, 'max' => 255],
             ['email', 'trim'],
@@ -31,6 +49,11 @@ class RegisterForm extends Model
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
+            ['confirm_passwords', 'compare', 'compareAttribute' => 'password'],
+            [['mobile_phone_no'], 'string'],
+            [['mobile_phone_no'], PhoneInputValidator::className()],
+            [['agreement'],'required','message'=>''],
+            ['verifyCode','captcha'],
         ];
     }
     /**

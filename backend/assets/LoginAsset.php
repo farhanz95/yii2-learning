@@ -21,7 +21,8 @@ class LoginAsset extends AssetBundle
         // 'theme/vendor/jquery/jquery_ui/jquery-ui.min.js',
         'theme/assets/js/utility/utility.js',
         'theme/assets/js/demo/demo.js',
-        'theme/assets/js/main.js'
+        'theme/assets/js/main.js',
+        'js/main.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

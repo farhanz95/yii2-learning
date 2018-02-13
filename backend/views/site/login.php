@@ -83,7 +83,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                   <div class="section">
                     <div class="form-group field-loginform-rememberme">
-                      <label class="switch block">
+                      <label class="block mt15 switch switch-primary">
                         <input type="checkbox" name="LoginForm[rememberMe]" id="loginform-rememberme" checked>
                         <label for="loginform-rememberme" data-on="YES" data-off="NO"></label>
                         <span>Remember me</span>
