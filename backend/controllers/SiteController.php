@@ -22,7 +22,7 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login','register', 'error'],
                         'allow' => true,
                     ],
                     [
@@ -95,6 +95,17 @@ class SiteController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+
+    public function actionRegister()
+    {
+        $this->layout = 'login';
+
+        $model = new \common\models\RegisterForm();
+
+        return $this->render('register',[
+            'model' => $model
+        ]);
     }
 
     /**

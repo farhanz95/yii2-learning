@@ -33,6 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
                   <!-- .tagline -->
 
                   <div class="section">
+                    <a href="register" class="button btn-social btn-default span-left btn-block">
+                      <span>
+                        <i class="fa fa-user-plus"></i>
+                      </span>Register Account</a>
                     <a href="#" class="button btn-social facebook span-left btn-block">
                       <span>
                         <i class="fa fa-facebook"></i>
