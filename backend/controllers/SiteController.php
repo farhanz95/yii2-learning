@@ -106,11 +106,15 @@ class SiteController extends Controller
         if ($data = Yii::$app->request->post()) {
 
             if ($model->load($data)) {
-                if ($user = $model->signup()) {
 
-                    return $this->render('register',[
-                        'model' => $model
-                    ]);
+            // echo "<pre>";
+            // \yii\helpers\VarDumper::dump(\yii\widgets\ActiveForm::validate($model));
+            // echo "</pre>";
+            // die;
+
+                if ($user = $model->register()) {
+
+                    return $this->redirect('login');
                     
                 }
             }
@@ -120,6 +124,10 @@ class SiteController extends Controller
         return $this->render('register',[
             'model' => $model
         ]);
+    }
+
+    public function actionGetPelanNomborTelefonMalaysia($id){
+        return \common\models\PelanNomborTelefonMalaysia::findOne($id)->pelan_nama;
     }
 
     /**

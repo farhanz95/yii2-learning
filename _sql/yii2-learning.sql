@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 100203
 File Encoding         : 65001
 
-Date: 2018-02-13 18:36:14
+Date: 2018-02-14 19:36:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -111,6 +111,9 @@ CREATE TABLE `auth_assignment` (
 INSERT INTO `auth_assignment` VALUES ('frontend_user', '1', '1517902136');
 INSERT INTO `auth_assignment` VALUES ('frontend_user', '2', '1518077494');
 INSERT INTO `auth_assignment` VALUES ('frontend_user', '3', '1518143283');
+INSERT INTO `auth_assignment` VALUES ('frontend_user', '4', '1518603488');
+INSERT INTO `auth_assignment` VALUES ('frontend_user', '5', '1518604200');
+INSERT INTO `auth_assignment` VALUES ('frontend_user', '6', '1518604299');
 
 -- ----------------------------
 -- Table structure for auth_item
@@ -1215,6 +1218,39 @@ INSERT INTO `item` VALUES ('999', 'Fintone', 'IB-41048', 'Apparatus', '36', '29.
 INSERT INTO `item` VALUES ('1000', 'Zontrax', 'QB-00607', 'Household', '82', '959.45', 'Burweed Marsh Elder', 'New Beetle', 'Welch, Cummings and Koss', '133', '7', '3', '89275', '530 Heffernan Alley', '90', '26.18', '70.39', '430.04', '54.51', '2018-02-19 00:00:00', '2018-03-30 00:00:00', '2018-04-26 00:00:00', '2018-02-05 19:01:37', null, '1');
 
 -- ----------------------------
+-- Table structure for kod_kawasan_telekom_malaysia
+-- ----------------------------
+DROP TABLE IF EXISTS `kod_kawasan_telekom_malaysia`;
+CREATE TABLE `kod_kawasan_telekom_malaysia` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `kod_kawasan_no` varchar(11) DEFAULT NULL,
+  `kod_kawasan_nama` varchar(255) DEFAULT NULL,
+  `kod_kawasan_no_lama` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of kod_kawasan_telekom_malaysia
+-- ----------------------------
+INSERT INTO `kod_kawasan_telekom_malaysia` VALUES ('1', '0065', 'Republik Singapura', '+602');
+INSERT INTO `kod_kawasan_telekom_malaysia` VALUES ('2', '+603', 'Kuala Lumpur, Putrajaya, Selangor & Pahang (Genting Highland)', null);
+INSERT INTO `kod_kawasan_telekom_malaysia` VALUES ('3', '+604', 'Perlis, Kedah (kecuali Daerah Bandar Baharu), Pulau Pinang & Perak (Pengkalan Hulu)', null);
+INSERT INTO `kod_kawasan_telekom_malaysia` VALUES ('4', '+605', 'Perak, Pahang (Cameron Highlands) & Kedah (Daerah Bandar Baharu)', null);
+INSERT INTO `kod_kawasan_telekom_malaysia` VALUES ('5', '+606', 'Negeri Sembilan (kecuali Gemas), Melaka & Johor (Muar)', null);
+INSERT INTO `kod_kawasan_telekom_malaysia` VALUES ('6', '+607', 'Johor (kecuali Daerah Muar) & Negeri Sembilan (Gemas)', null);
+INSERT INTO `kod_kawasan_telekom_malaysia` VALUES ('7', '+6080', 'Negara Brunei Darussalam', null);
+INSERT INTO `kod_kawasan_telekom_malaysia` VALUES ('8', '+6081', 'Akses domestik sahaja', null);
+INSERT INTO `kod_kawasan_telekom_malaysia` VALUES ('9', '+6082', 'Sarawak (Kuching)', null);
+INSERT INTO `kod_kawasan_telekom_malaysia` VALUES ('10', '+6083', 'Sri Aman, Betong', null);
+INSERT INTO `kod_kawasan_telekom_malaysia` VALUES ('11', '+6084', 'Bintangor, Kanowit, Kapit, Sarikei, Sibu, Song', null);
+INSERT INTO `kod_kawasan_telekom_malaysia` VALUES ('12', '+6085', 'Lawas, Limbang, Miri', null);
+INSERT INTO `kod_kawasan_telekom_malaysia` VALUES ('13', '+6086', 'Bintulu, Belaga', null);
+INSERT INTO `kod_kawasan_telekom_malaysia` VALUES ('14', '+6087', 'Sabah (Daerah Pendalaman, & Labuan)', null);
+INSERT INTO `kod_kawasan_telekom_malaysia` VALUES ('15', '+6088', 'Kota Kinabalu, Kudat', null);
+INSERT INTO `kod_kawasan_telekom_malaysia` VALUES ('16', '+6089', 'Lahad Datu, Sandakan, Tawau', null);
+INSERT INTO `kod_kawasan_telekom_malaysia` VALUES ('17', '+609', 'Kelantan, Pahang (kecuali Cameron Highlands, dan Genting Highland) & Terengganu', null);
+
+-- ----------------------------
 -- Table structure for master_daerah
 -- ----------------------------
 DROP TABLE IF EXISTS `master_daerah`;
@@ -2297,6 +2333,52 @@ CREATE TABLE `organisation` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for pelan_nombor_telefon_malaysia
+-- ----------------------------
+DROP TABLE IF EXISTS `pelan_nombor_telefon_malaysia`;
+CREATE TABLE `pelan_nombor_telefon_malaysia` (
+  `pelan_no` varchar(9) NOT NULL,
+  `pelan_nama` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`pelan_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of pelan_nombor_telefon_malaysia
+-- ----------------------------
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('010', 'DIGI, XOX, Tune Talk');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('011-10', 'P1, Redtone Mobile');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('011-11', 'U Mobile');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('011-12', 'Maxis');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('011-13', 'XOX, Salamfone');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('011-14', 'Maxis, Celcom');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('011-15', 'Tune Talk, Celcom');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('011-16', 'DiGi, Tron');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('011-17', 'Yes 4G, Maxis');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('011-18', 'M, Celcom, Tune Talk');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('011-19', 'Celcom');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('011-20', 'Tron, XOX');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('011-22\r\n', 'Clixster Mobile');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('011-23', 'Maxis');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('012', 'Maxis');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('013', 'Celcom');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('014-2', 'Maxis');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('014-3', 'DiGi');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('014-5', 'Celcom');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('014-6', '	DiGi');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('014-7', 'Maxis');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('014-8', 'Celcom');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('014-9', 'DiGi');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('015-2', 'BluePack Network (5Ghz Internet & VOIP)');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('015-3', '	B&E Wireless Mobile');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('015-4', 'Celcom, TM Net, Jaring, Redtone Mobile');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('015-5', 'Celcom');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('015-6', 'Celcom');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('016', 'DiGi');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('017', 'Maxis');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('018', 'U Mobile');
+INSERT INTO `pelan_nombor_telefon_malaysia` VALUES ('019', 'Celcom');
+
+-- ----------------------------
 -- Table structure for uploaded
 -- ----------------------------
 DROP TABLE IF EXISTS `uploaded`;
@@ -2334,17 +2416,21 @@ CREATE TABLE `user` (
   `birth_city` int(11) DEFAULT NULL,
   `gender` char(1) COLLATE utf8_unicode_ci DEFAULT NULL,
   `mobile_phone_no` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `home_phone_no` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `password_reset_token` (`password_reset_token`),
   KEY `user_ibfk_1` (`organisation_id`),
   CONSTRAINT `user_ibfk_1` FOREIGN KEY (`organisation_id`) REFERENCES `organisation` (`organisation_id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'dunocymyso', 'uZEJcicMaxcGSaRYNE-AsVadgHxu_3Ny', '$2y$13$3j4eBZe25OdDHPH6Y09HQeO3CinBPqakve.bKZe8LCtb018etyJLG', null, 'jupihohup@yahoo.com', '10', '1517902136', '1517902136', null, null, null, null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('2', 'admin', '2bTAo1zJWr4KDRxT9lUYtAUmoylVZ_YN', '$2y$13$dD/3x0J2P/QF6dtGrPU4oOZslbyNMj7NC8B3tf43KxsB/M7ti3m5O', null, 'admin@admin.com', '10', '1518077494', '1518077494', null, null, null, null, null, null, null, null, null);
-INSERT INTO `user` VALUES ('3', 'farhan', 'RkuhD6QCshyHwrJDo_HKvn1V8Cx-rOPO', '$2y$13$gBp2HLPHmN.dbvuqsv.BXO7qINd/ok1nSk9irVfZAx3uvTDn8oyWi', null, 'farhan.unijaya@gmail.com', '10', '1518143283', '1518143283', null, null, null, null, null, null, null, null, null);
+INSERT INTO `user` VALUES ('1', 'dunocymyso', 'uZEJcicMaxcGSaRYNE-AsVadgHxu_3Ny', '$2y$13$3j4eBZe25OdDHPH6Y09HQeO3CinBPqakve.bKZe8LCtb018etyJLG', null, 'jupihohup@yahoo.com', '10', '1517902136', '1517902136', null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `user` VALUES ('2', 'admin', '2bTAo1zJWr4KDRxT9lUYtAUmoylVZ_YN', '$2y$13$dD/3x0J2P/QF6dtGrPU4oOZslbyNMj7NC8B3tf43KxsB/M7ti3m5O', null, 'admin@admin.com', '10', '1518077494', '1518077494', null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `user` VALUES ('3', 'farhan', 'RkuhD6QCshyHwrJDo_HKvn1V8Cx-rOPO', '$2y$13$gBp2HLPHmN.dbvuqsv.BXO7qINd/ok1nSk9irVfZAx3uvTDn8oyWi', null, 'farhan.unijaya@gmail.com', '10', '1518143283', '1518143283', null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `user` VALUES ('4', 'zoqysud', 'jE4CRiMlGe9QzDkaMkSkUN1ZbSphDE_s', '$2y$13$y.CO.3z8OrTjXOmoylt7supI/CIKq5Len5wXVZw.qAVYhivJLM4Jm', null, 'zivagycove@hotmail.com', '10', '1518603488', '1518603488', null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `user` VALUES ('5', 'dilapy', 'TAEed-6XpuaL-Q2QCpxBCkUJGRrCSuUm', '$2y$13$ELb1pnBxFWNe4zqG6mQ4OOmzlHi0HXnweDbZHYzxtDX7f.eY/fb9m', null, 'qozi@hotmail.com', '10', '1518604200', '1518604200', null, 'Damon', 'Ruiz', '2006-07-24 00:00:00', '179', null, null, 'M', '019-382-4192', '03-6177-5205');
+INSERT INTO `user` VALUES ('6', 'hurycexoc', 'aiFr1InZhxOssSVyG2LT1XD31p09LMGT', '$2y$13$dazF8MZts92J0bG1cn7.oehqodLDwQgJzMtgd6fZrooX9b9/5HoPy', null, 'gujupitu@hotmail.com', '10', '1518604298', '1518604298', null, 'Bert', 'Mercado', '2006-02-20 00:00:00', '238', null, null, 'O', '019-382-4192', '03-6177-5205');

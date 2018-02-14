@@ -15,6 +15,7 @@ class LoginAsset extends AssetBundle
         'css/loginsite.css',
         'theme/assets/skin/default_skin/css/logintheme.css',
         'theme/assets/admin-tools/admin-forms/css/admin-forms.css',
+        'theme_smooth/vendor/plugins/datepicker/css/bootstrap-datetimepicker.css',
     ];
     public $js = [
         // 'theme/vendor/jquery/jquery-1.11.1.min.js',
