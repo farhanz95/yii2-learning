@@ -1,53 +1,141 @@
 <?php
 
-/* @var $this yii\web\View */
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
 
 $this->title = 'My Yii Application';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
+     <!-- Begin: Content -->
+      <section id="content" class="table-layout animated fadeIn">
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+        <!-- begin: .tray-center -->
+        <div class="tray tray-center">      
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+          <!-- dashboard tiles -->
+          <div class="row">
+            <div class="col-sm-4 col-xl-3">
+              <div class="panel panel-tile text-center br-a br-grey">
+                <div class="panel-body">
+                  <h1 class="fs30 mt5 mbn">1,426</h1>
+                  <h6 class="text-system">NEW ORDERS</h6>
+                </div>
+                <div class="panel-footer br-t p12">
+                  <span class="fs11">
+                    <i class="fa fa-arrow-up pr5"></i> 3% INCREASE
+                    <b>1W AGO</b>
+                  </span>
+                </div>
+              </div>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
+            <div class="col-sm-4 col-xl-3">
+              <div class="panel panel-tile text-center br-a br-grey">
+                <div class="panel-body">
+                  <h1 class="fs30 mt5 mbn">63,262</h1>
+                  <h6 class="text-success">TOTAL SALES GROSS</h6>
+                </div>
+                <div class="panel-footer br-t p12">
+                  <span class="fs11">
+                    <i class="fa fa-arrow-up pr5"></i> 2.7% INCREASE
+                    <b>1W AGO</b>
+                  </span>
+                </div>
+              </div>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+            <div class="col-sm-4 col-xl-3">
+              <div class="panel panel-tile text-center br-a br-grey">
+                <div class="panel-body">
+                  <h1 class="fs30 mt5 mbn">248</h1>
+                  <h6 class="text-warning">PENDING SHIPMENTS</h6>
+                </div>
+                <div class="panel-footer br-t p12">
+                  <span class="fs11">
+                    <i class="fa fa-arrow-up pr5 text-success"></i> 1% INCREASE
+                    <b>1W AGO</b>
+                  </span>
+                </div>
+              </div>
             </div>
+            <div class="col-sm-3 col-xl-3 visible-xl">
+              <div class="panel panel-tile text-center br-a br-grey">
+                <div class="panel-body">
+                  <h1 class="fs30 mt5 mbn">6,718</h1>
+                  <h6 class="text-danger">UNIQUE VISITS</h6>
+                </div>
+                <div class="panel-footer br-t p12">
+                  <span class="fs11">
+                    <i class="fa fa-arrow-down pr5 text-danger"></i> 6% DECREASE
+                    <b>1W AGO</b>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row hidden">
+            <div class="col-sm-4 col-xl-3">
+              <div class="panel panel-tile text-center br-a br-grey">
+                <div class="panel-body">
+                  <h1 class="fs30 mt5 mbn">1,426</h1>
+                  <h6 class="text-system">NEW ORDERS</h6>
+                </div>
+                <div class="panel-footer br-t p12 hidden">
+                  <span class="fs11">
+                    <i class="fa fa-arrow-up pr5"></i> 3% INCREASE
+                    <b>1W AGO</b>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-xl-3">
+              <div class="panel panel-tile text-center br-a br-grey">
+                <div class="panel-body">
+                  <h1 class="fs30 mt5 mbn">63,262</h1>
+                  <h6 class="text-success">TOTAL SALES GROSS</h6>
+                </div>
+                <div class="panel-footer br-t p12 hidden">
+                  <span class="fs11">
+                    <i class="fa fa-arrow-up pr5"></i> 2.7% INCREASE
+                    <b>1W AGO</b>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-xl-3">
+              <div class="panel panel-tile text-center br-a br-grey">
+                <div class="panel-body">
+                  <h1 class="fs30 mt5 mbn">248</h1>
+                  <h6 class="text-warning">PENDING SHIPMENTS</h6>
+                </div>
+                <div class="panel-footer br-t p12 hidden">
+                  <span class="fs11">
+                    <i class="fa fa-arrow-up pr5 text-success"></i> 1% INCREASE
+                    <b>1W AGO</b>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3 col-xl-3 visible-xl">
+              <div class="panel panel-tile text-center br-a br-grey">
+                <div class="panel-body">
+                  <h1 class="fs30 mt5 mbn">6,718</h1>
+                  <h6 class="text-danger">UNIQUE VISITS</h6>
+                </div>
+                <div class="panel-footer br-t p12 hidden">
+                  <span class="fs11">
+                    <i class="fa fa-arrow-down pr5 text-danger"></i> 6% DECREASE
+                    <b>1W AGO</b>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-    </div>
+      </section>
+      <!-- End: Content -->
+
 </div>

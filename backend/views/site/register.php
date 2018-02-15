@@ -49,7 +49,11 @@ $('body').on('keyup','input[name=\"RegisterForm[mobile_phone_no]\"]',function(e)
         type: 'post',
         url: '".Yii::getAlias('@web')."/get/get-pelan-nombor-telefon-malaysia?id='+value,
         success: function(data){
-           $('.operator_no_telefon_bimbit').text('Operator : '+data);
+           if(data){
+            $('.operator_no_telefon_bimbit').text('Operator : '+data);
+           }else{
+            $('.operator_no_telefon_bimbit').text('');
+           }
         } 
     })
 
