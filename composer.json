@@ -22,7 +22,8 @@
         "kartik-v/yii2-export": "@dev",
         "kartik-v/yii2-widget-datepicker": "@dev",
         "fzaninotto/faker": "^1.7",
-        "borales/yii2-phone-input": "*"
+        "borales/yii2-phone-input": "*",
+        "asinfotrack/yii2-audittrail": "^0.8.3"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

@@ -47,6 +47,28 @@ class Item extends \yii\db\ActiveRecord
         return 'item';
     }
 
+    public function behaviors()
+    {
+        return [
+            // ...
+            'audittrail'=>[
+                'class'=>\asinfotrack\yii2\audittrail\behaviors\AuditTrailBehavior::className(),
+                
+                // some of the optional configurations
+                'ignoredAttributes'=>['created_at','updated_at'],
+                'consoleUserId'=>1, 
+                'attributeOutput'=>[
+                    'desktop_id'=>function ($value) {
+                        $model = Item::findOne($value);
+                        return sprintf('%s %s', $model->item_name, $model->item_name);
+                    },
+                    'last_checked'=>'datetime',
+                ],
+            ],
+            // ...
+        ];
+    }
+
     /**
      * @inheritdoc
      */

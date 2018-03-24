@@ -46,6 +46,7 @@ AppAsset::register($this);
     } else {
         $menuItems[] = ['label' => 'Item', 'url' => ['/item/index']];
         $menuItems[] = ['label' => 'User', 'url' => ['/user/index']];
+        $menuItems[] = ['label' => 'Audit Trail Entry', 'url' => ['/audit-trail-entry/index']];
 
         if (Yii::$app->user->can('Admin')) {
             
