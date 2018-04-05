@@ -6,13 +6,12 @@ use yii\helpers\Html;
 
 $this->title = $name;
 ?>
-
       <!-- Begin: Content -->
       <section id="content" class="pn animated fadeIn">
 
         <div class="center-block mt50 mw800">
-          <h1 class="error-title"> 404! </h1>
-          <h2 class="error-subtitle">Page Not Found.</h2>
+          <h1 class="error-title"> <?= $this->title ?> </h1>
+          <h2 class="error-subtitle"><?= nl2br(Html::encode($message)) ?></h2>
         </div>
         <div class="mid-section">
           <div class="mid-content clearfix">

@@ -766,6 +766,10 @@ AdminDesignAsset::register($this);
               <a href="#" class="animated animated-short fadeInUp">
                 <span class="fa fa-gear"></span> Settings </a>
             </li>
+            <li class="list-group-item">
+              <a href="<?=Yii::getAlias('@web')?>/site/changepassword" class="animated animated-short fadeInUp">
+                <span class="fa fa-key"></span> Change Password </a>
+            </li>
             <li class="dropdown-footer">
               <a href="#" class="" onClick="$('form#formLogout').submit()">
                 <span class="fa fa-power-off pr5"></span> Logout

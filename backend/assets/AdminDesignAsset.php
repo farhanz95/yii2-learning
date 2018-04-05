@@ -21,7 +21,7 @@ class AdminDesignAsset extends AssetBundle
         'http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700',
     ];
     public $js = [
-        'theme_smooth/vendor/jquery/jquery-1.11.1.min.js',
+        // 'theme_smooth/vendor/jquery/jquery-1.11.1.min.js',
         'theme_smooth/vendor/jquery/jquery_ui/jquery-ui.min.js',
         'theme_smooth/vendor/plugins/fullcalendar/lib/moment.min.js',
         'theme_smooth/vendor/plugins/fullcalendar/fullcalendar.min.js',

@@ -26,6 +26,9 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
 
+    public $old_password;
+    public $new_password;
+    public $repeat_password;
 
     /**
      * @inheritdoc
@@ -51,9 +54,20 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
+            ['old_password, new_password, repeat_password', 'required', 'on' => 'changePwd'],
+            ['old_password', 'findPasswords', 'on' => 'changePwd'],
+            ['repeat_password', 'compare', 'compareAttribute'=>'new_password', 'on'=>'changePwd'],
+            //
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
         ];
+    }
+
+    public function findPasswords($attribute, $params)
+    {
+        $user = User::findOne(Yii::app()->user->id);
+        if ($user->password != md5($this->old_password))
+            $this->addError($attribute, 'Old password is incorrect.');
     }
 
     /**
